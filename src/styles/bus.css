@@ -1,0 +1,278 @@
+.theme-bus {
+  --bg: #efe7d6;
+  --ink: #1c2430;
+  --muted: #5c6570;
+  --red: #d84a2f;
+  --navy: #243044;
+  --card: #f7f3ea;
+  --line: #d7cdb8;
+  --focus: #d84a2f;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(36, 48, 68, 0.08) 1px, transparent 0) 0 0 / 22px 22px,
+    var(--bg);
+  color: var(--ink);
+  font-family: "Schibsted Grotesk", "Segoe UI", sans-serif;
+}
+
+.theme-bus ::selection { background: #f3c7bc; }
+
+.bus-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(239, 231, 214, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+}
+.wordmark {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  font-size: 1.35rem;
+  text-decoration: none;
+}
+.wordmark span { color: var(--red); }
+.bus-nav { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.bus-nav a { text-decoration: none; font-weight: 600; }
+.bus-nav a:hover { color: var(--red); }
+
+.bus-wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding-bottom: 72px; }
+.kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 10px;
+}
+.theme-bus h1 {
+  font-size: clamp(2.7rem, 6vw, 5.1rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+.lede { font-size: 1.15rem; max-width: 46rem; color: var(--navy); margin: 0; }
+
+.hero { padding: 28px 0 10px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 28px; align-items: end; }
+.fact-stack { display: grid; gap: 10px; }
+.fact {
+  background: var(--navy);
+  color: #f4efe4;
+  padding: 14px 16px;
+  border-radius: 6px 18px 6px 6px;
+}
+.fact strong { display: block; font-size: 0.95rem; }
+.fact span { display: block; color: #d5dbe6; font-size: 0.88rem; margin-top: 4px; }
+
+.search-slab, .panel, .trip-card, .ticket, .account-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.search-slab { margin-top: 28px; padding: 18px; display: grid; grid-template-columns: 1fr 1fr 0.8fr auto; gap: 12px; align-items: end; }
+.search-slab .form-error { grid-column: 1 / -1; }
+.theme-bus label.field { display: grid; gap: 6px; font-size: 0.82rem; font-weight: 600; }
+.theme-bus label.field input, .theme-bus label.field select, .theme-bus label.field textarea {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 12px;
+  width: 100%;
+}
+.btn {
+  border: 0;
+  background: var(--red);
+  color: white;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn.navy { background: var(--navy); }
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.form-error { color: var(--red); font-size: 0.88rem; margin: 8px 0 0; }
+.field-error { color: var(--red); font-weight: 500; }
+
+.results-head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin: 28px 0 14px; }
+.results-head h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+.trip-list { display: grid; gap: 12px; }
+.trip-card { padding: 16px 18px; display: grid; grid-template-columns: 1.4fr 0.8fr auto; gap: 16px; align-items: center; }
+.operator { font-weight: 700; font-size: 1.05rem; }
+.meta { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+.timeline { display: flex; align-items: center; gap: 10px; font-variant-numeric: tabular-nums; }
+.timeline b { font-size: 1.25rem; }
+.timeline i {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--navy), var(--red));
+  display: block;
+  min-width: 48px;
+  position: relative;
+}
+.price { text-align: right; }
+.price strong { display: block; font-size: 1.35rem; letter-spacing: -0.04em; }
+.seat-note {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  margin-top: 6px;
+}
+
+.checkout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+.panel { padding: 18px; }
+.panel h2 { margin: 0 0 8px; letter-spacing: -0.04em; }
+.stack { display: grid; gap: 12px; }
+.choice {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  background: #fff;
+}
+.choice strong { display: block; }
+.choice span { color: var(--muted); font-size: 0.92rem; }
+.fare { display: flex; justify-content: space-between; border-top: 1px dashed var(--line); padding-top: 12px; margin-top: 8px; font-size: 1.15rem; }
+.fine { color: var(--muted); font-size: 0.88rem; }
+
+.pay-panel { max-width: 560px; margin-top: 18px; }
+.pay-methods { display: flex; gap: 8px; flex-wrap: wrap; }
+.pay-method {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+.pay-method.on { background: var(--navy); color: #f7f3ea; border-color: var(--navy); }
+.pay-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.companion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.buddy-card {
+  text-align: left;
+  min-height: 340px;
+  border-radius: 22px;
+  padding: 22px;
+  border: 2px solid var(--line);
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.buddy-card.mingle { background: #1a1c12; color: #f4f1e4; border-color: #1a1c12; }
+.buddy-card.travel { background: #f7f1e6; color: #2c241c; }
+.buddy-card h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.05em; }
+.buddy-card p { margin: 0; font-size: 1.05rem; line-height: 1.45; }
+.buddy-card .pick {
+  margin-top: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.buddy-card[aria-pressed="true"] { outline: 3px solid var(--red); outline-offset: 3px; }
+.buddy-card.mingle[aria-pressed="true"] { outline-color: #e2ff3d; }
+.action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+.ticket {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  overflow: hidden;
+}
+.ticket-main, .ticket-stub { padding: 22px; }
+.ticket-stub {
+  background:
+    radial-gradient(circle at left, transparent 12px, #243044 13px) left center / 16px 28px repeat-y,
+    #243044;
+  color: #f6f1e6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pnr { font-family: "IBM Plex Mono", monospace; letter-spacing: 0.08em; }
+.stamp {
+  display: inline-block;
+  border: 2px solid currentColor;
+  padding: 6px 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+.stamp.wait { color: var(--red); }
+.stamp.go { color: #1f7a45; }
+.seat-big { font-size: 3rem; letter-spacing: -0.06em; margin: 8px 0; font-weight: 700; }
+.row-preview { display: grid; grid-template-columns: repeat(4, 42px); gap: 8px; margin-top: 8px; }
+.row-preview span {
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px 8px 4px 4px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  font-family: "IBM Plex Mono", monospace;
+}
+.row-preview .gap { grid-column: 3; }
+.row-preview .me { background: var(--red); color: white; border-color: var(--red); }
+.row-preview .pal { background: var(--navy); color: white; border-color: var(--navy); }
+
+.account-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; margin-top: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+.chip.on { background: var(--navy); color: white; border-color: var(--navy); }
+.checkline { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; }
+
+.empty {
+  padding: 28px;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.35);
+}
+
+@media (max-width: 860px) {
+  .hero, .search-slab, .checkout, .companion-grid, .ticket, .account-grid, .trip-card {
+    grid-template-columns: 1fr;
+  }
+  .price { text-align: left; }
+  .bus-wrap { width: min(100% - 28px, 1120px); }
+  .ticket-stub {
+    background:
+      radial-gradient(circle at top, transparent 12px, #243044 13px) top center / 28px 16px repeat-x,
+      #243044;
+  }
+}
