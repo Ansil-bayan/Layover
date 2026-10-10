@@ -1,5 +1,15 @@
-# Layover itself is a Node.js app. Install those packages with:
-#   npm install
-#
-# This file is for the optional OKF converter at okf/travelbuddy/okf_convertor.py.
-# It needs Python 3.11 or newer and uses only the standard library.
+# Install with: npm install
+# Versions are the ones locked in package-lock.json.
+
+alasql==4.20.0
+jspdf==4.2.1
+leaflet==1.9.4
+pg==8.23.1
+react==19.3.0
+react-dom==19.3.0
+react-router-dom==7.18.4
+
+# Development
+@vitejs/plugin-react==4.7.0
+vite==6.4.4
+

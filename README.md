@@ -15,7 +15,7 @@ Fares are in INR. The payment screen is a template and does not charge a card. S
 - A Gemini API key, for TravelBuddy replies
 - Python 3.11, only if you run the optional OKF converter
 
-Node packages are installed with `npm install`. The Python converter has no third-party packages. See `requirements.txt`.
+Node packages and their locked versions are listed in `requirements.txt`. Install them with `npm install`. The Python converter uses only the standard library.
 
 ## Setup
 
