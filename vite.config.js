@@ -112,11 +112,14 @@ function databaseApi(connectionString) {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const apiKey = process.env.GEMINI_API_KEY || env.GEMINI_API_KEY;
+  const databaseUrl =
+    process.env.DATABASE_URL || env.DATABASE_URL || "postgres://layover:layover@127.0.0.1:5433/layover";
   return {
     plugins: [
       react(),
-      guideApi(env.GEMINI_API_KEY),
-      databaseApi(env.DATABASE_URL || "postgres://layover:layover@127.0.0.1:5433/layover"),
+      guideApi(apiKey),
+      databaseApi(databaseUrl),
     ],
     server: {
       port: 5173,
