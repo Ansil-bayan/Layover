@@ -1,6 +1,8 @@
 # Layover
-
+SPA booking app for long distance bus travel that lets users with similiar interests decide if they want to sit next to each other by chatting before boarding. 
 Layover books overnight buses between Indian cities, then offers two companions for the trip.
+
+It also features a RAG agent that creates itineraries for the users based on the time they have left in the city and their preferences, keeping in mind that the plans and schedules may be subject to improvision. you can update the itinerary in realtime by talking to the agent and keep changing plans and adding stops.
 
 - **MingleBuddy** is a private chat for people on the same departure, with a request to sit together.
 - **TravelBuddy** books a hotel, builds a timed itinerary, and answers from the city notes. The same guide covers amenities such as a currency exchange or a local restaurant.
