@@ -274,12 +274,19 @@ export async function replyFromGuide(input) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt: retrievalBrief(input) }),
     });
-    const payload = await response.json();
-    if (payload.text) return payload.text.trim();
-    if (payload.error) return payload.error;
-    return composeGuideAnswer(input);
-  } catch {
-    return composeGuideAnswer(input);
+    const raw = await response.text();
+    let payload = null;
+    try {
+      payload = JSON.parse(raw);
+    } catch {
+      payload = null;
+    }
+    if (payload?.text) return payload.text.trim();
+    const detail = payload?.error || raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 220);
+    if (detail) return `TravelBuddy could not get an answer from Gemini (HTTP ${response.status}). ${detail}`;
+    return `TravelBuddy could not get an answer from Gemini (HTTP ${response.status}).`;
+  } catch (error) {
+    return `TravelBuddy could not reach the guide service. ${error?.message || "The request failed."}`;
   }
 }
 
