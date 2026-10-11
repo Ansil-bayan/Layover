@@ -105,13 +105,17 @@ function cosine(left, right) {
   return denom ? dot / denom : 0;
 }
 
-function semanticSearch(question, limit = 4) {
+function semanticSearch(question, limit = 4, city = "") {
   const query = embed(question);
-  return getCatalog()
+  const place = city.toLowerCase();
+  const ranked = getCatalog()
     .passages.map((passage) => ({ ...passage, score: cosine(query, embed(`${passage.title} ${passage.text}`)) }))
     .filter((passage) => passage.score > 0.08)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit);
+    .sort((a, b) => b.score - a.score);
+  const local = place
+    ? ranked.filter((passage) => `${passage.concept} ${passage.text}`.toLowerCase().includes(place))
+    : ranked;
+  return (local.length ? local : ranked).slice(0, limit);
 }
 
 function clockFromMatch(match) {
@@ -160,7 +164,7 @@ export function consultGuide(question, booking, options = {}) {
     run("SELECT id, name, kind, note FROM amenities WHERE city = ?", [city]);
   }
 
-  const semantic = semanticSearch(question);
+  const semantic = semanticSearch(question, 4, city);
   const actions = [];
   const shops = alasql("SELECT id, name, on_route, note FROM shops WHERE city = ?", [city]);
   const sights = alasql("SELECT id, name FROM sights WHERE city = ?", [city]);
@@ -271,8 +275,9 @@ export async function replyFromGuide(input) {
       body: JSON.stringify({ prompt: retrievalBrief(input) }),
     });
     const payload = await response.json();
-    if (!response.ok || !payload.text) return composeGuideAnswer(input);
-    return payload.text.trim();
+    if (payload.text) return payload.text.trim();
+    if (payload.error) return payload.error;
+    return composeGuideAnswer(input);
   } catch {
     return composeGuideAnswer(input);
   }
