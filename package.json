@@ -10,7 +10,7 @@
     "start": "vite preview --host 0.0.0.0 --port ${PORT:-4173}"
   },
   "dependencies": {
-    "alasql": "^4.20.0",
+    "alasql": "^4.20.1",
     "jspdf": "^4.2.1",
     "leaflet": "^1.9.4",
     "pg": "^8.23.1",
